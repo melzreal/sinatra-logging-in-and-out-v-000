@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
     if !@user.nil?
       session[:id] = @user.id
       erb :account
+      binding.pry
     else
       erb :error
     end
