@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   post '/login' do
     binding.pry
     checkUser = User.find(params[:username])
-    
+
     if !checkUser.empty?
       session[:id] = checkUser.id
       erb :account
