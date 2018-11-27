@@ -11,17 +11,19 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
-    binding.pry
-    checkUser = User.find(params[:username])
-
-    if !checkUser.empty?
-      session[:id] = checkUser.id
+    
+    
+     @user = User.find_by(username: params[:username])
+    if !@user.nil?
+      session[:id] = @user.id
       erb :account
     else
       erb :error
     end
   end
 
+  User.all.map{|a| a.id if a.username = "flatiron4lyfe"}
+  
   get '/account' do
 
   end
